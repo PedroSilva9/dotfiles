@@ -49,6 +49,7 @@ call vundle#begin()
   Plugin 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp', 'c']}
 
   Plugin 'scrooloose/nerdtree'
+  Plugin 'gyim/vim-boxdraw'
 
 call vundle#end()            " required
 
