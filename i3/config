@@ -67,10 +67,10 @@ bindsym $mod+Shift+d exec rofi -show run -theme onedark.rasi
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -91,7 +91,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -189,19 +189,19 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks -c /home/pedro/.config/i3/i3blocks.conf
-        colors {
-              separator $base03
-              background $base01
-              statusline $base05
-#                        border  background text
-              focused_workspace  $base01 $base01    $base07
-              active_workspace   $base01 $base02    $base03
-              inactive_workspace $base01 $base01    $base03
-              urgent_workspace   $base01 $base01    $base08
-        }
-}
+#bar {
+#        status_command i3blocks -c /home/pedro/.config/i3/i3blocks.conf
+#        colors {
+#              separator $base03
+#              background $base01
+#              statusline $base05
+##                        border  background text
+#              focused_workspace  $base01 $base01    $base07
+#              active_workspace   $base01 $base02    $base03
+#              inactive_workspace $base01 $base01    $base03
+#              urgent_workspace   $base01 $base01    $base08
+#        }
+#}
 
 #Lock screen with i3locks
 bindsym $mod+Shift+x exec i3lock --color "$base01"
@@ -214,17 +214,16 @@ gaps outer 10
 assign [class="discord"] $ws7
 assign [class="Spotify"] $ws7
 
-exec_always compton -f
+exec_always xcompmgr
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws2; exec terminator'
-exec --no-startup-id i3-msg 'workspace $ws9; exec nvidia-settings'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option caps:escape
 
 #Custom keybinds
 bindsym $mod+Ctrl+f exec --no-startup-id firefox
-bindsym $mod+Ctrl+c exec --no-startup-id chromium-browser
+bindsym $mod+Ctrl+c exec --no-startup-id chromium
 bindsym $mod+Ctrl+d exec --no-startup-id discord
 bindsym $mod+Ctrl+s exec --no-startup-id spotify
 bindsym $mod+Ctrl+m exec --no-startup-id pavucontrol
@@ -234,9 +233,9 @@ bindsym $mod+Shift+Ctrl+r exec systemctl reboot
 bindsym $mod+Ctrl+t exec thunar
 bindsym $mod+g 			exec i3-sensible-terminal -e ranger
 
-bindsym --release Print exec "scrot -m '/home/pedro/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png' && xclip '/home/pedro/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
-bindsym --release Shift+Print exec "scrot -s '/home/pedro/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
-bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/pedro/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release Print exec "scrot -m '/home/luk/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png' && xclip '/home/pedro/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/luk/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/luk/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -255,3 +254,4 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
