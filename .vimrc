@@ -185,3 +185,9 @@ set statusline+=%*
 
   nnoremap <leader>f :set foldmethod=indent<CR>
   nnoremap <leader>F :set foldmethod=manual<CR>
+
+
+  nnoremap <leader>+ :vertical resize -5<CR>
+  nnoremap <leader>- :vertical resize +5<CR>
+  nnoremap <leader>* :resize -5<CR>
+  nnoremap <leader>_ :resize +5<CR>
