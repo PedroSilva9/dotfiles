@@ -137,8 +137,17 @@ set statusline+=%*
 " Keep terminals transparenc
   hi Normal guibg=NONE ctermbg=NONE
 
-"  nnoremap <leader><Left> :tabprevious<CR>
-"  nnoremap <leader><Right> :tabnext<CR>
+"  Scrolling tabs
+  map <leader>1 1gt
+  map <leader>2 2gt
+  map <leader>3 3gt
+  map <leader>4 4gt
+  map <leader>5 5gt
+  map <leader>6 6gt
+  map <leader>7 7gt
+  map <leader>8 8gt
+  map <leader>9 9gt
+  map <leader>t :tabnew<CR>
   nnoremap <leader>n <esc>:tabprevious<CR>
   nnoremap <leader>m <esc>:tabnext<CR>
 
