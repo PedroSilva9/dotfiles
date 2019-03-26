@@ -124,6 +124,9 @@ alias li="cd ~/UMinho/LI3"
 alias SO="cd ~/UMinho/SO"
 alias POO="cd ~/UMinho/POO"
 alias CP="cd ~/UMinho/CP"
+alias ga="git add"
+alias gc="git commit"
+alias gs="git status"
 
 $ c() { cd "$@" && ls; }
 
