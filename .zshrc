@@ -9,7 +9,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 # Path to your oh-my-zsh installation.
@@ -21,15 +21,8 @@ export ZSH="/home/luk/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_MODE='awesome-fontconfig'
 ZSH_THEME="robbyrussell"
-
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%F{white}$ "
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -115,12 +108,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias i3cfg="vim ~/.config/i3/config"
-alias bkg="./gogh"
-alias som="pavucontrol&"
-alias li="cd ~/UMinho/LI3"
+alias v="nvim"
+alias vim="nvim"
+alias zshrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.vimrc"
+alias i3cfg="nvim ~/.config/i3/config"
+alias tcfg="nvim ~/.config/termite/config"
+alias li="cd ~/UMinho/LI3/git/LI3"
 alias SO="cd ~/UMinho/SO"
 alias POO="cd ~/UMinho/POO"
 alias CP="cd ~/UMinho/CP"
@@ -172,3 +166,5 @@ bindkey '^?' backward-delete-char  #backspace
 # ctrl+r to search history
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
