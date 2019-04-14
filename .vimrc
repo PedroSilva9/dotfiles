@@ -13,6 +13,11 @@ filetype off                  " required
 
 let mapleader =","
 
+"if filereadable(expand("~/.vimrc_background"))
+"  let base16colorspace=256
+"  source ~/.vimrc_background
+"endif
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -39,7 +44,7 @@ call vundle#begin()
   Plugin 'tpope/vim-surround'
 
 "Haskell highlight
-  Plugin 'neovimhaskell/haskell-vim', {'for': ['haskell']}
+  "Plugin 'neovimhaskell/haskell-vim', {'for': ['haskell', 'hs']}
 
 "Fuzzy file finder
   Plugin 'kien/ctrlp.vim'
@@ -50,6 +55,10 @@ call vundle#begin()
 
   Plugin 'scrooloose/nerdtree'
   Plugin 'gyim/vim-boxdraw'
+  "Plugin 'godlygeek/tabular'
+  "Plugin 'mkitt/tabline.vim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'dag/vim2hs'
 
 call vundle#end()            " required
 
@@ -59,6 +68,7 @@ colorscheme gruvbox
 filetype plugin indent on    " required
 "set cursorline
 "hi CursorLine term=bold cterm=bold guibg=White
+set termguicolors
 set number                  " Enable line numbers.
 set numberwidth=5           " width of numbers line (default on gvim is 4)
 set rnu                     " Set relative number
@@ -93,6 +103,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+set guicursor=
+
 " gvim needed
   vnoremap <C-c> "*y :let @+=@*<CR>
   "map <C-a> "+P
@@ -106,6 +118,15 @@ set statusline+=%*
   let g:airline_section_gutter=''
   let g:airline_skip_empty_sections = 1
   let g:airline_section_x=''
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_splits = 0
+  let g:airline#extensions#tabline#show_tabs = 1
+  let g:airline#extensions#tabline#show_tab_count = 0
+  let g:airline#extensions#tabline#formatter = 'unique_tail'
+  let g:bufferline_echo = 0
+  let g:airline#extensions#tabline#tab_nr_type = 1
+
 
 "Syntastic config
   let g:syntastic_always_populate_loc_list = 1
@@ -122,10 +143,13 @@ set statusline+=%*
   let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
   nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
+"Tabular
+  let g:tabular_loaded = 1
+
 "Save with Ctrl-S
-  noremap <silent> <C-S>          :update<CR>
-  vnoremap <silent> <C-S>         <C-C>:update<CR>
-  inoremap <silent> <C-S>         <C-O>:update<CR>
+  noremap <silent> <C-S>          :w<CR>
+  vnoremap <silent> <C-S>         <ESC>:w<ESC><CR>
+  inoremap <silent> <C-S>         <ESC>:w<CR>
 
 " Quick quit command
   noremap <leader>q :quit<CR>
@@ -147,6 +171,7 @@ set statusline+=%*
   map <leader>7 7gt
   map <leader>8 8gt
   map <leader>9 9gt
+  map <leader>0 10gt
   map <leader>t :tabnew<CR>
   nnoremap <leader>n <esc>:tabprevious<CR>
   nnoremap <leader>m <esc>:tabnext<CR>
@@ -187,7 +212,7 @@ set statusline+=%*
   nnoremap <leader>F :set foldmethod=manual<CR>
 
 
-  nnoremap <leader>+ :vertical resize -5<CR>
-  nnoremap <leader>- :vertical resize +5<CR>
-  nnoremap <leader>* :resize -5<CR>
-  nnoremap <leader>_ :resize +5<CR>
+  nnoremap <leader>- :vertical resize -5<CR>
+  nnoremap <leader>+ :vertical resize +5<CR>
+  nnoremap <leader>_ :resize -5<CR>
+  nnoremap <leader>* :resize +5<CR>
