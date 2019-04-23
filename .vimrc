@@ -1,171 +1,224 @@
-#            _
-#    _______| |__  _ __ ___
-#   |_  / __| '_ \| '__/ __|
-#    / /\__ \ | | | | | (__
-#   /___|___/_| |_|_|  \___|
-#
+"         _
+"        (_)
+"  __   ___ _ __ ___  _ __ ___
+"  \ \ / / | '_ ` _ \| '__/ __|
+"   \ V /| | | | | | | | | (__
+"    \_/ |_|_| |_| |_|_|  \___|
 
 
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:/usr/bin/cabal"
 
-#export TERM="xterm-256color"
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-# Path to your oh-my-zsh installation.
-export ZSH="/home/luk/.oh-my-zsh"
-# Adding hlint
-#export PATH="$PATH:/home/pedro/.cabal/bin"
+syntax on
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-POWERLEVEL9K_MODE='awesome-fontconfig'
-ZSH_THEME="robbyrussell"
+let mapleader =","
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+"if filereadable(expand("~/.vimrc_background"))
+"  let base16colorspace=256
+"  source ~/.vimrc_background
+"endif
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+"let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+"Syntastic
+  Plugin 'vim-syntastic/syntastic'
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+"Complete
+  "Plugin 'valloric/youcompleteme'
+  Plugin 'ervandew/supertab'
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+"Displays which mode you are on
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+"GODS PLUGIN
+  Plugin 'cohama/lexima.vim'
+  Plugin 'tpope/vim-surround'
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+"Haskell highlight
+  "Plugin 'neovimhaskell/haskell-vim', {'for': ['haskell', 'hs']}
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+"Fuzzy file finder
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'powerline/fonts'
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+  Plugin 'morhetz/gruvbox'
+  Plugin 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp', 'c']}
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'gyim/vim-boxdraw'
+  "Plugin 'godlygeek/tabular'
+  "Plugin 'mkitt/tabline.vim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'dag/vim2hs'
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+call vundle#end()            " required
 
-source $ZSH/oh-my-zsh.sh
+set bg=dark
+colorscheme gruvbox
 
-# User configuration
+filetype plugin indent on    " required
+"set cursorline
+"hi CursorLine term=bold cterm=bold guibg=White
+set termguicolors
+set number                  " Enable line numbers.
+set numberwidth=5           " width of numbers line (default on gvim is 4)
+set rnu                     " Set relative number
+set report=0                " Show all changes.
+set showmode                " Show the current mode.
+set showcmd                 " show partial command on last line of screen.
+set showmatch               " show matching parenthesis
+set splitbelow splitright   " how to split new windows.
+set title                   " Show the filename in the window title bar.
+set hlsearch
+set ignorecase              " Ignores case sensitive cases when searching
 
-# export MANPATH="/usr/local/man:$MANPATH"
+set scrolloff=5             " Start scrolling n lines before horizontal
+                            "   border of window.
+set sidescrolloff=7         " Start scrolling n chars before end of screen.
+set sidescroll=1            " The minimal number of columns to scroll
+                            "   horizontally.
+set wildmenu                " Hitting TAB in command mode will
+set wildchar=<TAB>          "   show possible completions.
+set wildmode=list:longest
+set wildignore+=*.DS_STORE,*.db,node_modules/**,*.jpg,*.png,*.gif
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+set expandtab                   " Expand tabs to spaces
+set autoindent smartindent      " auto/smart indent
+set copyindent                  " copy previous indentation on auto indent
+set softtabstop=2               " Tab key results in # spaces
+set tabstop=2                   " Tab is # spaces
+set shiftwidth=2                " The # of spaces for indenting.
+set smarttab                    " At start of line, <Tab> inserts shift width
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+set guicursor=                  " Enable block cursor in nvim
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+" gvim and xsel needed
+  "vnoremap <C-c> "*y :let @+=@*<CR>
+  inoremap <C-v> <ESC>"+pa
+  vnoremap <C-c> "+y
+  vnoremap <C-x> "+d
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Aliases
-alias v="nvim"
-alias vim="nvim"
-alias zshrc="nvim ~/.zshrc"
-alias vimrc="nvim ~/.vimrc"
-alias i3cfg="nvim ~/.config/i3/config"
-alias tcfg="nvim ~/.config/termite/config"
-alias li="cd ~/UMinho/LI3/git/LI3"
-alias SO="cd ~/UMinho/SO"
-alias POO="cd ~/UMinho/POO"
-alias CP="cd ~/UMinho/CP"
-alias ga="git add"
-alias gc="git commit"
-alias gs="git status"
+"Airline config
+  let g:airline_theme='deus'
+  let g:airline_powerline_fonts = 1
+  let g:airline_section_z=''
+  let g:airline_section_error=''
+  let g:airline_section_warning=''
+  let g:airline_section_gutter=''
+  let g:airline_skip_empty_sections = 1
+  let g:airline_section_x=''
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_splits = 0
+  let g:airline#extensions#tabline#show_tabs = 1
+  let g:airline#extensions#tabline#show_tab_count = 0
+  let g:airline#extensions#tabline#formatter = 'unique_tail'
+  let g:bufferline_echo = 0
+  let g:airline#extensions#tabline#tab_nr_type = 1
 
-$ c() { cd "$@" && ls; }
 
-stty stop ''
-stty start ''
-stty -ixon
-stty -ixoff
+"Syntastic config
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_loc_list_height=5
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  map <leader>w :SyntasticCheck<CR>
+  map <leader>e :SyntasticReset<CR>
+  let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+  nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
-# enable vim mode on commmand line
-bindkey -v
+"Tabular
+  let g:tabular_loaded = 1
 
-# no delay entering normal mode
-# https://coderwall.com/p/h63etq
-# https://github.com/pda/dotzsh/blob/master/keyboard.zsh#L10
-# 10ms for key sequences
-KEYTIMEOUT=1
+"Save with Ctrl-S
+  noremap <silent> <C-S>          :w<CR>
+  vnoremap <silent> <C-S>         <ESC>:w<ESC><CR>
+  inoremap <silent> <C-S>         <ESC>:w<CR>
 
-# show vim status
-# http://zshwiki.org/home/examples/zlewidgets
-#function zle-line-init zle-keymap-select {
-#    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-#    RPS2=$RPS1
-#    zle reset-prompt
-#}
-zle -N zle-line-init
-zle -N zle-keymap-select
+" Quick quit command
+  noremap <leader>q :quit<CR>
+  noremap <leader>Q :qa!<CR>
 
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
+" Automatically deletes all trailing whitespace on save.
+  autocmd BufWritePre * %s/\s\+$//e
 
-# add missing vim hotkeys
-# http://zshwiki.org/home/zle/vi-mode
-bindkey -a u undo
-bindkey -a '^T' redo
-bindkey '^?' backward-delete-char  #backspace
+" Keep terminals transparenc
+  hi Normal guibg=NONE ctermbg=NONE
 
-# history search in vim mode
-# http://zshwiki.org./home/zle/bindkeys#why_isn_t_control-r_working_anymore
-# ctrl+r to search history
-bindkey -M viins '^r' history-incremental-search-backward
-bindkey -M vicmd '^r' history-incremental-search-backward
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+"  Scrolling tabs
+  map <leader>1 1gt
+  map <leader>2 2gt
+  map <leader>3 3gt
+  map <leader>4 4gt
+  map <leader>5 5gt
+  map <leader>6 6gt
+  map <leader>7 7gt
+  map <leader>8 8gt
+  map <leader>9 9gt
+  map <leader>0 10gt
+  map <leader>t :tabnew<CR>
+  nnoremap <leader>n <esc>:tabprevious<CR>
+  nnoremap <leader>m <esc>:tabnext<CR>
+
+" Press Space to turn off highlighting and clear any message already displayed.
+  nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Easier way to move between splits
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H>
+
+" NerdTree
+  map <C-z> :NERDTreeToggle<CR>
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Unbind arrow keys
+  noremap <Up> <Nop>
+  noremap <Down> <Nop>
+  noremap <Left> <Nop>
+  noremap <Right> <Nop>
+
+" easier moving of code blocks
+  vnoremap < <gv  " better indentation
+  vnoremap > >gv  " better indentation
+
+" map sort function to a key
+  vnoremap <Leader>s :sort<CR>
+
+" disable backup and swap files
+  set nobackup
+  set nowritebackup
+  set noswapfile
+
+
+" Folding methods
+  nnoremap <leader>f :set foldmethod=indent<CR>
+  nnoremap <leader>F :set foldmethod=manual<CR>
+
+
+" Resize splits
+  nnoremap <leader>- :vertical resize -5<CR>
+  nnoremap <leader>+ :vertical resize +5<CR>
+  nnoremap <leader>_ :resize -5<CR>
+  nnoremap <leader>* :resize +5<CR>
