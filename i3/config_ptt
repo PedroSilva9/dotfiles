@@ -448,6 +448,7 @@ bindsym $mod+Ctrl+k exec systemctl poweroff
 bindsym $mod+Shift+Ctrl+r exec systemctl reboot
 bindsym $mod+Shift+t exec thunar
 bindsym $mod+g exec i3-sensible-terminal -e ranger
+bindsym $mod+F1 exec --no-startup-id ~/ttp.sh
 
 exec_always xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec_always xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1

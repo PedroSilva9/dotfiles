@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
-alias i3cfg="vim ~/.config/i3/config"
+alias i3cfg="vim ~/.i3/config"
 alias bkg="./gogh"
 alias som="pavucontrol&"
 alias li="cd ~/UMinho/LI3"

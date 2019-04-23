@@ -51,10 +51,18 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'gyim/vim-boxdraw'
 
+  Plugin 'webdevel/tabulous'
+  Plugin 'chase/focuspoint-vim'
+  Plugin 'sickill/vim-monokai'
+  Plugin 'benburrill/potato-colors'
+  Plugin 'kamykn/skyhawk'
+  Plugin 'aradunovic/perun.vim'
+  Plugin 'dracula/vim'
+
 call vundle#end()            " required
 
 set bg=dark
-colorscheme gruvbox
+colorscheme potato
 
 filetype plugin indent on    " required
 "set cursorline
