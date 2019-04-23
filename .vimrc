@@ -103,11 +103,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-set guicursor=
+set guicursor=                  " Enable block cursor in nvim
 
-" gvim needed
-  vnoremap <C-c> "*y :let @+=@*<CR>
-  "map <C-a> "+P
+" gvim and xsel needed
+  "vnoremap <C-c> "*y :let @+=@*<CR>
+  inoremap <C-v> <ESC>"+pa
+  vnoremap <C-c> "+y
+  vnoremap <C-x> "+d
 
 "Airline config
   let g:airline_theme='deus'
@@ -179,6 +181,7 @@ set guicursor=
 " Press Space to turn off highlighting and clear any message already displayed.
   nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Easier way to move between splits
   nnoremap <C-J> <C-W><C-J>
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
@@ -190,6 +193,7 @@ set guicursor=
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Unbind arrow keys
   noremap <Up> <Nop>
   noremap <Down> <Nop>
   noremap <Left> <Nop>
@@ -208,10 +212,12 @@ set guicursor=
   set noswapfile
 
 
+" Folding methods
   nnoremap <leader>f :set foldmethod=indent<CR>
   nnoremap <leader>F :set foldmethod=manual<CR>
 
 
+" Resize splits
   nnoremap <leader>- :vertical resize -5<CR>
   nnoremap <leader>+ :vertical resize +5<CR>
   nnoremap <leader>_ :resize -5<CR>

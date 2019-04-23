@@ -217,7 +217,7 @@ assign [class="Spotify"] $ws7
 exec_always xcompmgr
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws2; exec terminator'
+exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option caps:escape
 
@@ -231,7 +231,7 @@ bindsym $mod+Ctrl+n exec systemctl suspend
 bindsym $mod+Ctrl+k exec systemctl poweroff
 bindsym $mod+Shift+Ctrl+r exec systemctl reboot
 bindsym $mod+Ctrl+t exec thunar
-bindsym $mod+g 			exec i3-sensible-terminal -e ranger
+bindsym $mod+g 			exec termite -e ranger
 
 bindsym --release Print exec "scrot -m '/home/luk/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png' && xclip '/home/pedro/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
 bindsym --release Shift+Print exec "scrot -s '/home/luk/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
