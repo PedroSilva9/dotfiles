@@ -109,28 +109,23 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-<<<<<<< HEAD
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias i3cfg="vim ~/.i3/config"
-alias bkg="./gogh"
-alias som="pavucontrol&"
-alias li="cd ~/UMinho/LI3"
-=======
 alias v="nvim"
 alias vim="nvim"
 alias zshrc="nvim ~/.zshrc"
 alias vimrc="nvim ~/.vimrc"
 alias i3cfg="nvim ~/.config/i3/config"
 alias tcfg="nvim ~/.config/termite/config"
-alias li="cd ~/UMinho/LI3/git/LI3"
->>>>>>> 8c8a129e7fc33ed740f2d9843b04da29eb158e1d
-alias SO="cd ~/UMinho/SO"
-alias POO="cd ~/UMinho/POO"
-alias CP="cd ~/UMinho/CP"
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
+
+# Shortcuts
+alias li="cd ~/UMinho/LI3/git/LI3"
+alias SO="cd ~/UMinho/SO"
+alias POO="cd ~/UMinho/POO"
+alias CP="cd ~/UMinho/CP"
+alias trab="cd ~/UMinho/Trabalhos"
+alias scrn="cd ~/Pictures/screenshots"
 
 $ c() { cd "$@" && ls; }
 
@@ -176,5 +171,3 @@ bindkey '^?' backward-delete-char  #backspace
 # ctrl+r to search history
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

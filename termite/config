@@ -4,7 +4,7 @@ allow_bold = true
 #bold_is_bright = true
 clickable_url = true
 #dynamic_title = true
-font = Source Code Pro Medium 15
+font = Source Code Pro Medium 13
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -21,7 +21,7 @@ scrollback_lines = 10000
 #browser = xdg-open
 
 # "system", "on" or "off"
-#cursor_blink = system
+cursor_blink = on
 
 # "block", "underline" or "ibeam"
 #cursor_shape = block

@@ -57,6 +57,7 @@ call vundle#begin()
   Plugin 'gyim/vim-boxdraw'
   "Plugin 'godlygeek/tabular'
   "Plugin 'mkitt/tabline.vim'
+  Plugin 'tpope/vim-commentary'
   Plugin 'tpope/vim-fugitive'
   Plugin 'dag/vim2hs'
 
@@ -222,3 +223,16 @@ set guicursor=                  " Enable block cursor in nvim
   nnoremap <leader>+ :vertical resize +5<CR>
   nnoremap <leader>_ :resize -5<CR>
   nnoremap <leader>* :resize +5<CR>
+
+" Navigating with guides
+	inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
+	vnoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
+  map <leader><Tab> <Esc>/<++><Enter>"_c4l
+
+" Latex bindings
+  autocmd FileType tex set softtabstop=4
+  autocmd FileType tex set tabstop=4
+  autocmd FileType tex set shiftwidth=4
+  autocmd FileType tex map <F10> :silent !pdflatex % && start %:r.pdf<CR>
+	autocmd FileType tex inoremap ,em \emph{}<++><Esc>T{i
+	autocmd FileType tex inoremap ,bf \textbf{}<++><Esc>T{i
