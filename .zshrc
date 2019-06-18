@@ -118,6 +118,7 @@ alias tcfg="nvim ~/.config/termite/config"
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
+alias sg="stack ghci"
 
 # Shortcuts
 alias li="cd ~/UMinho/LI3/git/LI3"
