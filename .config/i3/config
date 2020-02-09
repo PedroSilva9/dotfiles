@@ -13,6 +13,18 @@
 
 set $mod Mod1
 
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 1
+new_float normal
+
+# Hide borders
+hide_edge_borders none
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 2
+bindsym $mod+n border normal
+
 set $base00 #101218
 set $base01 #1f222d
 set $base02 #252936
@@ -50,7 +62,8 @@ font pango:DejaVu Sans Mono Book 10
 floating_modifier $mod
 
 # start a terminal
- bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -58,9 +71,9 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 500 -opacity "80" -bw 0 -bc "$base01" -bg "$base02" -fg "$base07" -hlbg "$base05" -columns 2 -hlfg "#9575cd"
-bindsym $mod+d exec rofi -show drun -theme onedark.rasi
-bindsym $mod+Shift+d exec rofi -show run -theme onedark.rasi
-#bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec rofi -show drun -theme onedark.rasi
+#bindsym $mod+Shift+d exec rofi -show run -theme onedark.rasi
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -79,10 +92,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -90,11 +103,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+c split h
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+h workspace prev
 
-# split in vertical orientation
-bindsym $mod+v split v
+# split
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -114,20 +128,20 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+t focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6:"
-set $ws7 "7:"
-set $ws8 "8:"
-set $ws9 "9:"
-set $ws10 "10:"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -187,6 +201,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Shift+y resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+u resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+i resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #bar {
@@ -214,16 +233,21 @@ for_window [class="^.*"] border pixel 2
 assign [class="discord"] $ws7
 assign [class="Spotify"] $ws7
 
-exec_always xcompmgr
+exec_always --no-startup-id xcompmgr
+exec_always --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id setxkbmap pt
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 165
+exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' -0.6
+exec --no-startup-id nvidia-settings& disown && sleep 1 && killall nvidia-settings
 
 #Custom keybinds
 bindsym $mod+Ctrl+f exec --no-startup-id firefox
-bindsym $mod+Ctrl+c exec --no-startup-id chromium
 bindsym $mod+Ctrl+d exec --no-startup-id discord
 bindsym $mod+Ctrl+s exec --no-startup-id spotify
 bindsym $mod+Ctrl+m exec --no-startup-id pavucontrol
@@ -231,7 +255,7 @@ bindsym $mod+Ctrl+n exec systemctl suspend
 bindsym $mod+Ctrl+k exec systemctl poweroff
 bindsym $mod+Shift+Ctrl+r exec systemctl reboot
 bindsym $mod+Ctrl+t exec thunar
-bindsym F1 exec termite -e ranger
+bindsym $mod+F1 exec termite -e ranger
 
 bindsym --release Print exec scrot '%Y-%m-%d_$wx$h.png' -s -e 'xclip -sel clip -t image/png $f && rm $f'
 bindsym --release Shift+Print exec scrot '%Y-%m-%d_$wx$h.png' -s -e 'xclip -sel clip -t image/png $f && rm $f'
@@ -246,15 +270,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-# Touchpad controls
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #565656 #285577 #ffffff #565656   #565656
@@ -264,3 +284,16 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [title="ranger"] floating enable
