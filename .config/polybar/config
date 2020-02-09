@@ -37,7 +37,7 @@ module-margin-right = 2
 
 font-0 = NotoSans-Regular:size=8;0
 font-1 = Unifont:size=5;0
-font-2 = FontAwesome:size=8;0
+font-2 = FontAwesome:size=9;0
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = Unifont:size=5;0
 font-5 = Termsynu:size=7;0
@@ -45,7 +45,7 @@ font-5 = Termsynu:size=7;0
 tray-position = right
 tray-padding = 2
 
-modules-left = bspwm i3 spotify
+modules-left = bspwm i3
 modules-center = xwindow
 modules-right = filesystem cpu pulseaudio clock
 
@@ -144,16 +144,17 @@ type = internal/i3
 format = <label-state> <label-mode>
 pin-workspaces = true
 
-ws-icon-0 = term;
-ws-icon-1 = web;
-ws-icon-2 = code;
-ws-icon-3 = music;
-ws-icon-4 = irssi;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-7 = 5;
 ws-icon-default = 
 
 label-dimmed-underline = ${root.background}
 
-label-focused = %icon%  %name%
+;label-focused = %icon%  %name%
+label-focused = %icon%
 label-focused-foreground = #f3f3f3
 label-focused-background = #3f3f3f
 ;label-focused-underline = #${colors.accent}
@@ -162,12 +163,14 @@ label-focused-underline = #ffb52a
 label-focused-font = 4
 label-focused-padding = 4
 
-label-unfocused = %icon%  %name%
+;label-unfocused = %icon%  %name%
+label-unfocused = %icon%
 label-unfocused-underline = #555555
 label-unfocused-font = 4
 label-unfocused-padding = 4
 
-label-urgent = %icon%  %name%
+;label-urgent = %icon%  %name%
+label-urgent = %icon%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-underline = #9b0a20
