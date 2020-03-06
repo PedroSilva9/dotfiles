@@ -52,6 +52,9 @@ Plugin 'gyim/vim-boxdraw'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'dag/vim2hs'
+Plugin 'cool.vim'
+
+Plugin 'drtom/fsharp-vim'
 
 call vundle#end()
 
