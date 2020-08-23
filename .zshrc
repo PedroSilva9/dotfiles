@@ -31,6 +31,8 @@ alias z="nvim $HOME/.zshrc"
 alias v="nvim $HOME/.config/nvim/init.vim"
 alias i="nvim $HOME/.config/i3/config"
 alias t="nvim $HOME/.config/termite/config"
+alias s="nvim $HOME/.config/sxhkd/sxhkdrc"
+alias b="nvim $HOME/.config/bspwm/bspwmrc"
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
@@ -41,6 +43,8 @@ alias :q="exit"
 alias cat="bat"
 alias p="sudo pacman"
 alias rt="killall -USR1 termite"
+alias rp="pkill -USR1 polybar"
+alias exercism="$HOME/bin/exercism"
 
 $ c() { cd "$@" && ls; }
 

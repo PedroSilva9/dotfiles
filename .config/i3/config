@@ -227,8 +227,8 @@ bindsym $mod+Shift+x exec i3lock --color "$base01"
 
 for_window [class="^.*"] border pixel 2
 
- gaps inner 15
- gaps outer 10
+gaps inner 15
+gaps outer 10
 
 assign [class="discord"] $ws7
 assign [class="Spotify"] $ws7
@@ -243,7 +243,6 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 165
-exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' -0.9
 exec --no-startup-id nvidia-settings& disown && sleep 1 && killall nvidia-settings
 
 #Custom keybinds
