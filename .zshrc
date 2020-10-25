@@ -10,6 +10,7 @@
 export TERM="xterm-256color"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
+export PATH="$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/luk/.oh-my-zsh"

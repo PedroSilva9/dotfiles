@@ -130,6 +130,12 @@ super + k
 super + r
   systemctl reboot
 
+super + e
+  setxkbmap -option caps:escape
+
+super + p
+  setxkbmap -layout pt
+
 Print
   maim -s -u | xclip -selection clipboard -t image/png -i
 

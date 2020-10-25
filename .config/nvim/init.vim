@@ -19,6 +19,8 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/goyo.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -182,6 +184,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " fzf
 nnoremap <C-p>     :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+
+" Goyo
+map <leader>f :Goyo \| :hi Normal guibg=NONE ctermbg=NONE <CR>
 
 " Unbind arrow keys
 noremap <Up> <Nop>
