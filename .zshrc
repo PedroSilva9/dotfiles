@@ -47,7 +47,20 @@ alias rt="killall -USR1 termite"
 alias rp="pkill -USR1 polybar"
 alias exercism="$HOME/bin/exercism"
 
-$ c() { cd "$@" && ls; }
+function c() {
+    cd "$@" && ls
+}
+
+function take() {
+    mkdir -p $@ && cd ${@:$#}
+}
+
+function swap(){
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+}
 
 stty stop ''
 stty start ''
