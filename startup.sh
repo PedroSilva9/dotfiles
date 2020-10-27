@@ -12,5 +12,8 @@ nitrogen --restore &
 if [ $(hostname -s) = "universe" ]; then
     xrandr --output DP-0 --mode 1920x1080 --rate 165 &
     timeout -k 10 10 nvidia-settings &
+    $HOME/.dotfiles/mouse.sh &
+else
+    $HOME/.dotfiles/touchpad.sh &
 fi
 

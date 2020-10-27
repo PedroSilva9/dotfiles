@@ -4,8 +4,6 @@ filetype off                  " required
 
 let mapleader =","
 
-let g:polyglot_disabled = ['markdown']
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -21,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
@@ -112,9 +111,6 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_
 map <leader>w :SyntasticCheck<CR>
 map <leader>e :SyntasticReset<CR>
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
-" Tabular
-let g:tabular_loaded = 1
 
 " Coc
 inoremap <silent><expr> <TAB>
