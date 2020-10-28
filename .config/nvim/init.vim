@@ -172,10 +172,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " NerdTree
-map <C-z> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" map <C-z> :NERDTreeToggle<CR>
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+nnoremap <leader>pv :wincmd v<bar> :wincmd h<bar> :Ex <bar> :vertical resize 30<CR>
 
 " fzf
 nnoremap <C-p>     :Files<CR>
@@ -185,6 +187,9 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 " Goyo
 map <leader>f :Goyo \| :hi Normal guibg=NONE ctermbg=NONE <CR>
+
+" Surround
+nmap <leader>a ysiw
 
 " Unbind arrow keys
 noremap <Up> <Nop>
