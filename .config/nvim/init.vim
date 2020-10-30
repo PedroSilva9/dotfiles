@@ -220,6 +220,12 @@ inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 map <leader><Tab> <Esc>/<++><Enter>"_c4l
 
+" Swap lines
+nnoremap mj :m +1<CR>
+nnoremap mk :m -2<CR>
+
+au Bufenter *.hs set nofoldenable
+
 " Latex bindings
 " autocmd FileType tex map <F10> :silent !pdflatex % && start %:r.pdf<CR>
 " autocmd FileType tex inoremap ,em \emph{}<++><Esc>T{i
