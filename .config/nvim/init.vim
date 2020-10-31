@@ -20,6 +20,7 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'elixir-lang/vim-elixir'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 

@@ -23,7 +23,7 @@ font-5 = Termsynu:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = cpu memory pulseaudio date
+modules-right = cpu pulseaudio date
 
 tray-position = right
 

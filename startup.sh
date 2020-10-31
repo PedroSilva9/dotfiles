@@ -1,7 +1,10 @@
 #!/bin/sh
 
-setxkbmap -layout pt &
-setxkbmap -option caps:escape &
+while [ $(xkblayout-state print "%s") != "pt" ]
+do
+    setxkbmap -layout pt &
+    setxkbmap -option caps:escape &
+done
 
 xcompmgr &
 $HOME/.config/polybar/launch.sh > /dev/null &
