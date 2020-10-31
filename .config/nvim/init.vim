@@ -225,6 +225,11 @@ map <leader><Tab> <Esc>/<++><Enter>"_c4l
 nnoremap mj :m +1<CR>
 nnoremap mk :m -2<CR>
 
+" Fugitive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
 au Bufenter *.hs set nofoldenable
 
 " Latex bindings
