@@ -45,7 +45,8 @@ alias cat="bat"
 alias p="sudo pacman"
 alias rt="killall -USR1 termite"
 alias rp="pkill -USR1 polybar"
-alias exercism="$HOME/bin/exercism"
+alias m="cd $HOME/Universidade/Masters"
+alias alloy="java -jar $HOME/Downloads/electrum-2.1.rc5.jar &"
 
 function c() {
     cd "$@" && ls
