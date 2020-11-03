@@ -45,7 +45,8 @@ alias cat="bat"
 alias p="sudo pacman"
 alias rt="killall -USR1 termite"
 alias rp="pkill -USR1 polybar"
-alias exercism="$HOME/bin/exercism"
+alias cpl="fc -ln -1 | sed -e 's/'\n/'/g' | xclip -sel clip"
+alias copy="xclip -sel clip"
 
 function c() {
     cd "$@" && ls
