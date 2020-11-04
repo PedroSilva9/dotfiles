@@ -47,6 +47,8 @@ alias rt="killall -USR1 termite"
 alias rp="pkill -USR1 polybar"
 alias cpl="fc -ln -1 | sed -e 's/'\n/'/g' | xclip -sel clip"
 alias copy="xclip -sel clip"
+alias m="cd $HOME/Universidade/Masters"
+alias alloy="java -jar $HOME/Downloads/electrum-2.1.rc5.jar &"
 
 function c() {
     cd "$@" && ls
