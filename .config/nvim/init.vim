@@ -235,7 +235,7 @@ nmap <leader>gs :G<CR>
 au Bufenter *.hs set nofoldenable
 
 nnoremap <C-n> :bnext<CR>
-nnoremap <C-N> :bprevious<CR>
+nnoremap <C-m> :bprevious<CR>
 
 
 " Latex bindings
