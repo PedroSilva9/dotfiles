@@ -234,6 +234,10 @@ nmap <leader>gs :G<CR>
 
 au Bufenter *.hs set nofoldenable
 
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-m> :bprevious<CR>
+
+
 " Latex bindings
 " autocmd FileType tex map <F10> :silent !pdflatex % && start %:r.pdf<CR>
 " autocmd FileType tex inoremap ,em \emph{}<++><Esc>T{i
