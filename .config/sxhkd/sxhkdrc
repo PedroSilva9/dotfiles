@@ -164,3 +164,6 @@ Print
 
 shift + Print
   maim -s -u $HOME/Pictures/screenshots/$(date '+%y%m%d-%H%M-%S').png
+
+alt + shift + d
+  rofimoji --rofi-args "-theme $HOME/.config/rofi/onedark.rasi"
