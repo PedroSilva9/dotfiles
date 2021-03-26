@@ -12,6 +12,8 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export PATH="$HOME/.local/bin:$PATH"
 
+export LC_ALL=en_US.UTF-8
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/luk/.oh-my-zsh"
 
@@ -34,11 +36,12 @@ alias i="nvim $HOME/.config/i3/config"
 alias t="nvim $HOME/.config/termite/config"
 alias s="nvim $HOME/.config/sxhkd/sxhkdrc"
 alias b="nvim $HOME/.config/bspwm/bspwmrc"
+alias dw="nvim $HOME/.config/dwm-6.2/config.def.h"
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
-alias ghc="stack ghc"
-alias ghci="stack ghci"
+alias sghc="stack ghc"
+alias sghci="stack ghci"
 alias ka="killall"
 alias :q="exit"
 alias cat="bat"
@@ -107,3 +110,7 @@ bindkey '^?' backward-delete-char  #backspace
 # ctrl+r to search history
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+[ -f "/home/luk/.ghcup/env" ] && source "/home/luk/.ghcup/env" # ghcup-env
+
+# opam configuration
+test -r /home/luk/.opam/opam-init/init.zsh && . /home/luk/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

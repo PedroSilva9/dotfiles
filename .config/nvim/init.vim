@@ -22,7 +22,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'elixir-lang/vim-elixir'
 Plug 'tpope/vim-fugitive'
 " Plug 'runoshun/vim-alloy'
+Plug 'alexeyignatiev/vim-dimacs'
 Plug 'whybin/alloy.vim'
+Plug 'bohlender/vim-smt2'
+Plug 'andreasvc/vim-256noir'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'alessandroyorba/alduin'
 
 call plug#end()
 
@@ -30,7 +35,7 @@ set bg=dark
 colorscheme gruvbox
 
 filetype plugin indent on
-set termguicolors
+"set termguicolors
 set number                  " Enable line numbers.
 set numberwidth=5           " width of numbers line (default on gvim is 4)
 set rnu                     " Set relative number
@@ -83,7 +88,7 @@ let g:loaded_ruby_provider = 0
 let g:loaded_node_provider = 0
 
 " Airline config
-let g:airline_theme='deus'
+let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline_section_z=''
 let g:airline_section_error=''
@@ -236,6 +241,13 @@ au Bufenter *.hs set nofoldenable
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-m> :bprevious<CR>
+
+" cnf stuff
+autocmd FileType dimacs inoremap ,or ∨
+autocmd FileType dimacs inoremap ,and ∧
+autocmd FileType dimacs inoremap ,no ¬
+autocmd FileType dimacs inoremap ,s →
+autocmd FileType dimacs inoremap ,eq ≡
 
 
 " Latex bindings

@@ -10,8 +10,6 @@ alt + {_, shift + }Return
 # alt + @space
 alt + d
 	rofi -modi window,drun,run,ssh -theme $HOME/.config/rofi/onedark.rasi -show drun -show-icons -icon-theme "Paper"
-	#dmenu_run -fn 'FuraCode Nerd Font 12'
-
 
 # make sxhkd reload its configuration files:
 alt + Escape

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-$HOME/.dotfiles/startup.sh &
+$HOME/dotfiles/startup.sh &
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep bspswallow || bspswallow &
