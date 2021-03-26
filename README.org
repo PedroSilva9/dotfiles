@@ -1,0 +1,13 @@
+#+TITLE: Dotfiles
+
+* My Setup
+
+| OS          | [[https://archlinux.org/][Arch Linux]]          |
+| WM          | [[https://github.com/PedroSilva9/dwm][dwm]]                 |
+| Text editor | NeoVim & doom emacs |
+| Compositor  | Rofi & dmenu        |
+| Terminal    | Termite & Urxvt     |
+| File Manger | Ranger              |
+| Shell       | Zsh                 |
+| PDF Reader  | Zathura             |
+| Multiplexer | Tmux                |
