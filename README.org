@@ -6,7 +6,7 @@
 | WM          | [[https://github.com/PedroSilva9/dwm][dwm]]                 |
 | Text editor | NeoVim & doom emacs |
 | Compositor  | Rofi & dmenu        |
-| Terminal    | Termite & Urxvt     |
+| Terminal    | Termite             |
 | File Manger | Ranger              |
 | Shell       | Zsh                 |
 | PDF Reader  | Zathura             |
