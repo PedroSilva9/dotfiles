@@ -1,5 +1,9 @@
+:PROPERTIES:
+:ID:       d81915fd-070e-4eed-9a50-985ed2d77b5a
+:END:
 #+TITLE: Dotfiles
 
+[[./setup.png]]
 
 | OS          | [[https://archlinux.org/][Arch Linux]]          |
 | WM          | [[https://github.com/PedroSilva9/dwm][dwm]]                 |
