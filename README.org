@@ -4,7 +4,7 @@
 | OS          | [[https://archlinux.org/][Arch Linux]]          |
 | WM          | [[https://github.com/PedroSilva9/dwm][dwm]]                 |
 | Text editor | NeoVim & doom emacs |
-| Compositor  | Rofi & dmenu        |
+| Compositor  | Xcompmgr            |
 | Terminal    | Termite             |
 | File Manger | Ranger              |
 | Shell       | Zsh                 |
