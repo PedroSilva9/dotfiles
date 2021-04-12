@@ -29,9 +29,9 @@ HISTFILE=~/.cache/zsh/history
 setopt appendhistory
 
 # Basic auto/tab complete:
+autoload -Uz compinit && compinit
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zmodload zsh/complist
@@ -39,7 +39,6 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # Load aliases
 [ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
-source /home/luk/.config/zsh/aliasrc
 
 function c() {
     cd "$@" && ls
