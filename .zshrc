@@ -5,53 +5,39 @@
 #   /___|___/_| |_|_|  \___|
 #
 
-
-# If you come from bash you might have to change your $PATH.
 export TERM="xterm-256color"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export PATH="$HOME/.local/bin:$PATH"
-
 export LC_ALL=en_US.UTF-8
+export PLUGIN_PATH="$HOME/.config/zsh/plugins"
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/luk/.oh-my-zsh"
+autoload -U colors && colors	# Load colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~%{$fg[red]%}]%{$fg[magenta]%}$%b "
+setopt autocd		# Automatically cd into typed directory.
+setopt interactive_comments
+stty stop undef		# Disable ctrl-s to freeze terminal.
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
 
-ZSH_THEME="robbyrussell"
+# History in cache directory:
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE=~/.cache/zsh/history
+setopt appendhistory
 
-plugins=(
-    git
-    zsh-syntax-highlighting
-    colored-man-pages
-    zsh-autosuggestions
-)
+# Basic auto/tab complete:
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+zmodload zsh/complist
+_comp_options+=(globdots)		# Include hidden files.
 
-source $ZSH/oh-my-zsh.sh
-
-# Aliases
-alias vim="nvim"
-alias z="nvim $HOME/.zshrc"
-alias v="nvim $HOME/.config/nvim/init.vim"
-alias i="nvim $HOME/.config/i3/config"
-alias t="nvim $HOME/.config/termite/config"
-alias s="nvim $HOME/.config/sxhkd/sxhkdrc"
-alias b="nvim $HOME/.config/bspwm/bspwmrc"
-alias dw="nvim $HOME/.config/dwm-6.2/config.def.h"
-alias ga="git add"
-alias gc="git commit"
-alias gs="git status"
-alias sghc="stack ghc"
-alias sghci="stack ghci"
-alias ka="killall"
-alias :q="exit"
-alias cat="bat"
-alias p="sudo pacman"
-alias rt="killall -USR1 termite"
-alias rp="pkill -USR1 polybar"
-alias cpl="fc -ln -1 | sed -e 's/'\n/'/g' | xclip -sel clip"
-alias copy="xclip -sel clip"
-alias m="cd $HOME/Universidade/Masters"
-alias alloy="java -jar $HOME/Downloads/electrum-2.1.rc5.jar &"
+# Load aliases
+[ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
+source /home/luk/.config/zsh/aliasrc
 
 function c() {
     cd "$@" && ls
@@ -68,35 +54,29 @@ function swap(){
     mv $TMPFILE "$2"
 }
 
-stty stop ''
-stty start ''
-stty -ixon
-stty -ixoff
-
 # enable vim mode on commmand line
 bindkey -v
-
-# no delay entering normal mode
-# https://coderwall.com/p/h63etq
-# https://github.com/pda/dotzsh/blob/master/keyboard.zsh#L10
-# 10ms for key sequences
 KEYTIMEOUT=1
 
-# show vim status
-# http://zshwiki.org/home/examples/zlewidgets
-#function zle-line-init zle-keymap-select {
-#    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-#    RPS2=$RPS1
-#    zle reset-prompt
-#}
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 function zle-line-init zle-keymap-select {
-VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
-RPS2=$RPS1
-zle reset-prompt
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
+    RPS2=$RPS1
+    zle reset-prompt
 }
 
 # add missing vim hotkeys
@@ -110,7 +90,13 @@ bindkey '^?' backward-delete-char  #backspace
 # ctrl+r to search history
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+
 [ -f "/home/luk/.ghcup/env" ] && source "/home/luk/.ghcup/env" # ghcup-env
 
 # opam configuration
 test -r /home/luk/.opam/opam-init/init.zsh && . /home/luk/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Plugins
+source $PLUGIN_PATH/colored-man-pages.plugin.zsh
+source $PLUGIN_PATH/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PLUGIN_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
