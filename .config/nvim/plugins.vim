@@ -5,6 +5,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'machakann/vim-highlightedyank'
 
 Plug 'alexeyignatiev/vim-dimacs'
 Plug 'whybin/alloy.vim'

@@ -1,15 +1,9 @@
 #!/bin/sh
 
-while [ $(xkblayout-state print "%s") != "pt" ]
-do
-    setxkbmap -layout pt -option caps:escape &
-done
-
 xcompmgr &
-#$HOME/.config/polybar/launch.sh > /dev/null &
 nm-applet &
-
 nitrogen --restore &
+dunst &
 
 if [ $(uname -n) = "universe" ]; then
     xrandr --output DP-0 --mode 1920x1080 --rate 165 &

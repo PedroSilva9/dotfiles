@@ -44,5 +44,10 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" Make Y yank until the end of the line
+nnoremap Y y$
+
+nnoremap Q :bdelete<CR>
+
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>

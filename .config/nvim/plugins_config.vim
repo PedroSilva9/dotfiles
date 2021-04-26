@@ -62,3 +62,6 @@ let g:lightline = {
       \   'buffers': 'tabsel'
       \ }
       \ }
+
+" HIGHLIGHTEDYANK
+let g:highlightedyank_highlight_duration = 100
