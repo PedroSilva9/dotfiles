@@ -51,3 +51,13 @@ nnoremap Q :bdelete<CR>
 
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Goyo
+map <leader>f :Goyo \| :hi Normal guibg=NONE ctermbg=NONE <CR>
+
+"Vifm
+map <Leader>vv :Vifm<CR>
+map <Leader>vs :VsplitVifm<CR>
+map <Leader>sp :SplitVifm<CR>
+map <Leader>dv :DiffVifm<CR>
+map <Leader>tv :TabVifm<CR>
