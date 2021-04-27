@@ -65,3 +65,6 @@ let g:lightline = {
 
 " HIGHLIGHTEDYANK
 let g:highlightedyank_highlight_duration = 100
+
+" Sneak
+let g:sneak#label = 1
